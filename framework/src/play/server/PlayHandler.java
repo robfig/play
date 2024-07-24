@@ -663,7 +663,7 @@ public class PlayHandler extends SimpleChannelUpstreamHandler {
     // TODO: add request and response as parameter
     public static void serve500(Exception e, ChannelHandlerContext ctx, HttpRequest nettyRequest) {
         Logger.trace("serve500: begin");
-        HttpResponse nettyResponse = new DefaultHttpResponse(HttpVersion.HTTP_1_1, HttpResponseStatus.INTERNAL_SERVER_ERROR);
+        HttpResponse nettyResponse = new DefaultHttpResponse(HttpVersion.HTTP_1_1, HttpResponseStatus.valueOf(response.status));
         if (exposePlayServer) {
             nettyResponse.setHeader(SERVER, signature);
         }
